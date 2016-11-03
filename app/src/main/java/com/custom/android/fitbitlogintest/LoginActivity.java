@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     // parameters (change if necessary)
     private final String authorizeUrl = "https://www.fitbit.com/oauth2/authorize";
     private final String responseType = "token"; // 'code' = authorization code grant flow | 'token' = implicit grant flow (currently only supports implicit)
-    private final String redirectUri = "https://github.com/ArronVan";
+    private String redirectUri;
     private final String expiresIn = "86400"; // 86400-1day | 604800-1week | 2592000-30days | 31536000-1yr
 
     // prompt options:
@@ -46,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        redirectUri = getResources().getString(R.string.redirect_uri);
 
         loginUrl = authorizeUrl + "?" +
                 "client_id=" + getResources().getString(R.string.client_id) + "&" +
